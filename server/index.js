@@ -7,14 +7,17 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
-let friends = ["Nitin", "Eric", "Jeddy", "Cameron", "Riley", "Chris"];
+let friends = ["Nitin", "John", "Jeddy", "Cameron", "Riley", "Chris"];
 
 app.get("/api/users", (req, res) => {
     res.status(200).send(friends);
 })
 
-
-
+app.get("/weather/:temp", (req,res) => {
+    const {temp} = req.params;
+    const phrase = `<h3>It is soooooo ${temp} today </h3>`;
+    res.status(200).send(phrase);
+})
 
 
 // server
